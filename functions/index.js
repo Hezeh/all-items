@@ -386,8 +386,8 @@ exports.itemsCollectionUpdate = functions.firestore
         const docId = context.params.itemId;
         const dataBefore = change.before.data();
         const dataAfter = change.after.data();
-        const url = 'https://api.beammart.app/index';
-        // const url = 'http://127.0.0.1:8000/index';
+        const url = 'https://api.beammart.app/update';
+        // const url = 'http://127.0.0.1:8000/update';
         // Update document in Elasticsearch
         const item = {
             itemId: docId,
