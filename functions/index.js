@@ -97,7 +97,7 @@ exports.deleteProfileItem = functions.firestore
 // On Profile/{userId}/items/{itemId} document updated
 exports.updateProfileItem = functions.firestore
     .document('profile/{userId}/items/{itemId}')
-    .onUpdate(async (snap, context) => {
+    .onUpdate(async (change, context) => {
         // Update the items collection
         itemId = context.params.itemId;
         const dataBefore = change.before.data();
