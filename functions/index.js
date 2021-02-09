@@ -109,114 +109,113 @@ exports.profileUpdate = functions.firestore
         const userId = context.params.userId;
         const dataBefore = change.before.data();
         const dataAfter = change.after.data();
-        if (dataAfter.businessName == dataBefore.businessName) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'businessName': dataAfter.businessName }, { merge: true });
-        }
-        if (dataAfter.location == dataBefore.location) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'location': dataAfter.location }, { merge: true });
-        }
-        if (dataAfter.locationDescription == dataBefore.locationDescription) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'locationDescription': dataAfter.locationDescription }, { merge: true });
-        }
-        if (dataAfter.businessDescription == dataBefore.businessDescription) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'businessDescription': dataAfter.businessDescription }, { merge: true });
-        }
-        if (dataAfter.phoneNumber == dataBefore.phoneNumber) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'phoneNumber': dataAfter.phoneNumber }, { merge: true });
-        }
-        // Monday
-        if (dataAfter.mondayOpeningHours == dataBefore.mondayOpeningHours) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'mondayOpeningHours': dataAfter.mondayOpeningHours }, { merge: true });
-        }
-        if (dataAfter.mondayClosingHours == dataBefore.mondayClosingHours) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'mondayClosingHours': dataAfter.mondayClosingHours }, { merge: true });
-        }
-        // Tuesday
-        if (dataAfter.tuesdayOpeningHours == dataBefore.tuesdayOpeningHours) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'tuesdayOpeningHours': dataAfter.tuesdayOpeningHours }, { merge: true });
-        }
-        if (dataAfter.tuesdayClosingHours == dataBefore.tuesdayClosingHours) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'tuesdayClosingHours': dataAfter.tuesdayClosingHours }, { merge: true });
-        }
-        // Wednesday
-        if (dataAfter.wednesdayOpeningHours == dataBefore.wednesdayOpeningHours) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'wednesdayOpeningHours': dataAfter.wednesdayOpeningHours }, { merge: true });
-        }
-        if (dataAfter.wednesdayClosingHours == dataBefore.wednesdayClosingHours) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'wednesdayClosingHours': dataAfter.wednesdayClosingHours }, { merge: true });
-        }
-        // Thursday
-        if (dataAfter.thursdayOpeningHours == dataBefore.thursdayOpeningHours) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'thursdayOpeningHours': dataAfter.thursdayOpeningHours }, { merge: true });
-        }
-        if (dataAfter.thursdayClosingHours == dataBefore.thursdayClosingHours) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'thursdayClosingHours': dataAfter.thursdayClosingHours }, { merge: true });
-        }
-        // Friday
-        if (dataAfter.fridayOpeningHours == dataBefore.fridayOpeningHours) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'fridayOpeningHours': dataAfter.fridayOpeningHours }, { merge: true });
-        }
-        if (dataAfter.fridayClosingHours == dataBefore.fridayClosingHours) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'fridayClosingHours': dataAfter.fridayClosingHours }, { merge: true });
-        }
-        // Saturday
-        if (dataAfter.saturdayOpeningHours == dataBefore.saturdayOpeningHours) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'saturdayOpeningHours': dataAfter.saturdayOpeningHours }, { merge: true });
-        }
-        if (dataAfter.saturdayClosingHours == dataBefore.saturdayClosingHours) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'saturdayClosingHours': dataAfter.saturdayClosingHours }, { merge: true });
-        }
-        // Sunday
-        if (dataAfter.sundayOpeningHours == dataBefore.sundayOpeningHours) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'sundayOpeningHours': dataAfter.sundayOpeningHours }, { merge: true });
-        }
-        if (dataAfter.sundayClosingHours == dataBefore.sundayClosingHours) {
-            return null;
-        } else {
-            await itemsRef.doc(docId).set({ 'sundayClosingHours': dataAfter.sundayClosingHours }, { merge: true });
-        }
         // Fetch all documents with the userId
         const profileSnapshots = await itemsRef.where('userId', '==', `${userId}`).get();
         // Update all the documents in /items collection
         profileSnapshots.forEach(async (doc) => {
             const docId = doc.id;
-            await itemsRef.doc(docId).set({ dataAfter }, { merge: true });
+            if (dataAfter.businessName == dataBefore.businessName) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'businessName': dataAfter.businessName }, { merge: true });
+            }
+            if (dataAfter.location == dataBefore.location) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'location': dataAfter.location }, { merge: true });
+            }
+            if (dataAfter.locationDescription == dataBefore.locationDescription) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'locationDescription': dataAfter.locationDescription }, { merge: true });
+            }
+            if (dataAfter.businessDescription == dataBefore.businessDescription) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'businessDescription': dataAfter.businessDescription }, { merge: true });
+            }
+            if (dataAfter.phoneNumber == dataBefore.phoneNumber) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'phoneNumber': dataAfter.phoneNumber }, { merge: true });
+            }
+            // Monday
+            if (dataAfter.mondayOpeningHours == dataBefore.mondayOpeningHours) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'mondayOpeningHours': dataAfter.mondayOpeningHours }, { merge: true });
+            }
+            if (dataAfter.mondayClosingHours == dataBefore.mondayClosingHours) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'mondayClosingHours': dataAfter.mondayClosingHours }, { merge: true });
+            }
+            // Tuesday
+            if (dataAfter.tuesdayOpeningHours == dataBefore.tuesdayOpeningHours) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'tuesdayOpeningHours': dataAfter.tuesdayOpeningHours }, { merge: true });
+            }
+            if (dataAfter.tuesdayClosingHours == dataBefore.tuesdayClosingHours) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'tuesdayClosingHours': dataAfter.tuesdayClosingHours }, { merge: true });
+            }
+            // Wednesday
+            if (dataAfter.wednesdayOpeningHours == dataBefore.wednesdayOpeningHours) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'wednesdayOpeningHours': dataAfter.wednesdayOpeningHours }, { merge: true });
+            }
+            if (dataAfter.wednesdayClosingHours == dataBefore.wednesdayClosingHours) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'wednesdayClosingHours': dataAfter.wednesdayClosingHours }, { merge: true });
+            }
+            // Thursday
+            if (dataAfter.thursdayOpeningHours == dataBefore.thursdayOpeningHours) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'thursdayOpeningHours': dataAfter.thursdayOpeningHours }, { merge: true });
+            }
+            if (dataAfter.thursdayClosingHours == dataBefore.thursdayClosingHours) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'thursdayClosingHours': dataAfter.thursdayClosingHours }, { merge: true });
+            }
+            // Friday
+            if (dataAfter.fridayOpeningHours == dataBefore.fridayOpeningHours) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'fridayOpeningHours': dataAfter.fridayOpeningHours }, { merge: true });
+            }
+            if (dataAfter.fridayClosingHours == dataBefore.fridayClosingHours) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'fridayClosingHours': dataAfter.fridayClosingHours }, { merge: true });
+            }
+            // Saturday
+            if (dataAfter.saturdayOpeningHours == dataBefore.saturdayOpeningHours) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'saturdayOpeningHours': dataAfter.saturdayOpeningHours }, { merge: true });
+            }
+            if (dataAfter.saturdayClosingHours == dataBefore.saturdayClosingHours) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'saturdayClosingHours': dataAfter.saturdayClosingHours }, { merge: true });
+            }
+            // Sunday
+            if (dataAfter.sundayOpeningHours == dataBefore.sundayOpeningHours) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'sundayOpeningHours': dataAfter.sundayOpeningHours }, { merge: true });
+            }
+            if (dataAfter.sundayClosingHours == dataBefore.sundayClosingHours) {
+                return null;
+            } else {
+                await itemsRef.doc(docId).set({ 'sundayClosingHours': dataAfter.sundayClosingHours }, { merge: true });
+            }
         });
     });
 
