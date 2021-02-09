@@ -241,8 +241,8 @@ exports.itemsCollectionCreate = functions.firestore
     .document('items/{itemId}')
     .onCreate(async (snap, context) => {
         const itemId = context.params.itemId;
-        const url = 'https://api.beammart.app/index';
-        // const url = 'http://127.0.0.1:8000/index';
+        // const url = 'https://api.beammart.app/index';
+        const url = 'http://127.0.0.1:8000/index';
         const item = {
             itemId: itemId
         };
@@ -386,11 +386,14 @@ exports.itemsCollectionUpdate = functions.firestore
         const docId = context.params.itemId;
         const dataBefore = change.before.data();
         const dataAfter = change.after.data();
-        const url = 'https://api.beammart.app/index';
-        // const url = 'http://127.0.0.1:8000/index';
+        // const url = 'https://api.beammart.app/index';
+        const url = 'http://127.0.0.1:8000/index';
         // Update document in Elasticsearch
+        console.log(dataBefore);
+        console.log(dataAfter);
+        console.log(`Title ${dataAfter.title}`);
 
-        if (dataBefore.businessName === dataBefore.businessName) {
+        if (dataBefore.businessName === dataAfter.businessName) {
             return null;
         } else {
             // await client.index({
@@ -413,7 +416,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.businessDescription === dataBefore.businessDescription) {
+        if (dataBefore.businessDescription === dataAfter.businessDescription) {
             return null;
         } else {
             const item = {
@@ -429,7 +432,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.location === dataBefore.location) {
+        if (dataBefore.location === dataAfter.location) {
             return null;
         } else {
             const item = {
@@ -445,7 +448,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.locationDescription === dataBefore.locationDescription) {
+        if (dataBefore.locationDescription === dataAfter.locationDescription) {
             return null;
         } else {
             const item = {
@@ -461,7 +464,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.phoneNumber === dataBefore.phoneNumber) {
+        if (dataBefore.phoneNumber === dataAfter.phoneNumber) {
             return null;
         } else {
             const item = {
@@ -477,9 +480,10 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.title === dataBefore.title) {
+        if (dataBefore.title === dataAfter.title) {
             return null;
         } else {
+            console.log(dataAfter.title);
             const item = {
                 itemId: docId,
                 title: dataAfter.title
@@ -493,7 +497,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.description === dataBefore.description) {
+        if (dataBefore.description === dataAfter.description) {
             return null;
         } else {
             const item = {
@@ -509,7 +513,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.price === dataBefore.price) {
+        if (dataBefore.price === dataAfter.price) {
             return null;
         } else {
             const item = {
@@ -525,7 +529,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.dateAdded === dataBefore.dateAdded) {
+        if (dataBefore.dateAdded === dataAfter.dateAdded) {
             return null;
         } else {
             const item = {
@@ -541,7 +545,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.dateModified === dataBefore.dateModified) {
+        if (dataBefore.dateModified === dataAfter.dateModified) {
             return null;
         } else {
             const item = {
@@ -557,7 +561,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.images === dataBefore.images) {
+        if (dataBefore.images === dataAfter.images) {
             return null;
         } else {
             const item = {
@@ -573,7 +577,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.mondayOpeningHours === dataBefore.mondayOpeningHours) {
+        if (dataBefore.mondayOpeningHours === dataAfter.mondayOpeningHours) {
             return null;
         } else {
             const item = {
@@ -589,7 +593,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.mondayClosingHours === dataBefore.mondayClosingHours) {
+        if (dataBefore.mondayClosingHours === dataAfter.mondayClosingHours) {
             return null;
         } else {
             const item = {
@@ -605,7 +609,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.tuesdayOpeningHours === dataBefore.tuesdayOpeningHours) {
+        if (dataBefore.tuesdayOpeningHours === dataAfter.tuesdayOpeningHours) {
             return null;
         } else {
             const item = {
@@ -621,7 +625,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.tuesdayClosingHours === dataBefore.tuesdayClosingHours) {
+        if (dataBefore.tuesdayClosingHours === dataAfter.tuesdayClosingHours) {
             return null;
         } else {
             const item = {
@@ -637,7 +641,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.wednesdayOpeningHours === dataBefore.wednesdayOpeningHours) {
+        if (dataBefore.wednesdayOpeningHours === dataAfter.wednesdayOpeningHours) {
             return null;
         } else {
             const item = {
@@ -653,7 +657,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.wednesdayClosingHours === dataBefore.wednesdayClosingHours) {
+        if (dataBefore.wednesdayClosingHours === dataAfter.wednesdayClosingHours) {
             return null;
         } else {
             const item = {
@@ -669,7 +673,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.thursdayOpeningHours === dataBefore.thursdayOpeningHours) {
+        if (dataBefore.thursdayOpeningHours === dataAfter.thursdayOpeningHours) {
             return null;
         } else {
             const item = {
@@ -685,7 +689,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.thursdayClosingHours === dataBefore.thursdayClosingHours) {
+        if (dataBefore.thursdayClosingHours === dataAfter.thursdayClosingHours) {
             return null;
         } else {
             const item = {
@@ -701,7 +705,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.fridayOpeningHours === dataBefore.fridayOpeningHours) {
+        if (dataBefore.fridayOpeningHours === dataAfter.fridayOpeningHours) {
             return null;
         } else {
             const item = {
@@ -717,7 +721,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.fridayClosingHours === dataBefore.fridayClosingHours) {
+        if (dataBefore.fridayClosingHours === dataAfter.fridayClosingHours) {
             return null;
         } else {
             const item = {
@@ -733,7 +737,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.saturdayOpeningHours === dataBefore.saturdayOpeningHours) {
+        if (dataBefore.saturdayOpeningHours === dataAfter.saturdayOpeningHours) {
             return null;
         } else {
             const item = {
@@ -749,7 +753,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.saturdayClosingHours === dataBefore.saturdayClosingHours) {
+        if (dataBefore.saturdayClosingHours === dataAfter.saturdayClosingHours) {
             return null;
         } else {
             const item = {
@@ -765,7 +769,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.sundayOpeningHours === dataBefore.sundayOpeningHours) {
+        if (dataBefore.sundayOpeningHours === dataAfter.sundayOpeningHours) {
             return null;
         } else {
             const item = {
@@ -781,7 +785,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.sundayClosingHours === dataBefore.sundayClosingHours) {
+        if (dataBefore.sundayClosingHours === dataAfter.sundayClosingHours) {
             return null;
         } else {
             const item = {
