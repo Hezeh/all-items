@@ -394,7 +394,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
-            // Error handling
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.businessDescription == dataBefore.businessDescription) {
             return null;
@@ -409,6 +410,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.location == dataBefore.location) {
             return null;
@@ -423,6 +426,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.locationDescription == dataBefore.locationDescription) {
             return null;
@@ -437,6 +442,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.phoneNumber == dataBefore.phoneNumber) {
             return null;
@@ -451,6 +458,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.title == dataBefore.title) {
             return null;
@@ -465,6 +474,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.description == dataBefore.description) {
             return null;
@@ -479,6 +490,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.price == dataBefore.price) {
             return null;
@@ -493,6 +506,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.dateAdded == dataBefore.dateAdded) {
             return null;
@@ -507,6 +522,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.dateModified == dataBefore.dateModified) {
             return null;
@@ -521,6 +538,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.images == dataBefore.images) {
             return null;
@@ -535,6 +554,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.mondayOpeningHours == dataBefore.mondayOpeningHours) {
             return null;
@@ -549,6 +570,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.mondayClosingHours == dataBefore.mondayClosingHours) {
             return null;
@@ -563,6 +586,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.tuesdayOpeningHours == dataBefore.tuesdayOpeningHours) {
             return null;
@@ -577,6 +602,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.tuesdayClosingHours == dataBefore.tuesdayClosingHours) {
             return null;
@@ -591,6 +618,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.wednesdayOpeningHours == dataBefore.wednesdayOpeningHours) {
             return null;
@@ -605,6 +634,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.wednesdayClosingHours == dataBefore.wednesdayClosingHours) {
             return null;
@@ -619,6 +650,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.thursdayOpeningHours == dataBefore.thursdayOpeningHours) {
             return null;
@@ -633,6 +666,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.thursdayClosingHours == dataBefore.thursdayClosingHours) {
             return null;
@@ -647,6 +682,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.fridayOpeningHours == dataBefore.fridayOpeningHours) {
             return null;
@@ -661,6 +698,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.fridayClosingHours == dataBefore.fridayClosingHours) {
             return null;
@@ -675,6 +714,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.saturdayOpeningHours == dataBefore.saturdayOpeningHours) {
             return null;
@@ -689,6 +730,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.saturdayClosingHours == dataBefore.saturdayClosingHours) {
             return null;
@@ -703,6 +746,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.sundayOpeningHours == dataBefore.sundayOpeningHours) {
             return null;
@@ -717,6 +762,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
         if (dataBefore.sundayClosingHours == dataBefore.sundayClosingHours) {
             return null;
@@ -731,6 +778,8 @@ exports.itemsCollectionUpdate = functions.firestore
                 url: url,
                 data: jsonItem
             })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
         }
     });
 
