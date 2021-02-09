@@ -393,18 +393,26 @@ exports.itemsCollectionUpdate = functions.firestore
         console.log(dataAfter);
         console.log(`Title ${dataAfter.title}`);
 
-        if (dataBefore.businessName === dataAfter.businessName) {
-            return null;
-        } else {
-            // await client.index({
-            //     index: 'items',
-            //     id: docId,
-            //     body: {
-            //         'businessName': dataAfter.businessName
-            //     }
-            // });
+        if (dataBefore.title != dataAfter.title) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
+                title: dataAfter.title
+            }
+            const jsonItem = JSON.stringify(item);
+            axios({
+                method: 'POST',
+                url: url,
+                data: jsonItem
+            })
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
+        }
+
+        if (dataBefore.businessName != dataAfter.businessName) {
+            const item = {
+                itemId: docId,
+                userId: dataBefore.userId,
                 businessName: dataAfter.businessName
             }
             const jsonItem = JSON.stringify(item);
@@ -416,11 +424,11 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.businessDescription === dataAfter.businessDescription) {
-            return null;
-        } else {
+
+        if (dataBefore.businessDescription != dataAfter.businessDescription) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 businessDescription: dataAfter.businessDescription
             }
             const jsonItem = JSON.stringify(item);
@@ -432,11 +440,11 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.location === dataAfter.location) {
-            return null;
-        } else {
+
+        if (dataBefore.location != dataAfter.location) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 location: dataAfter.location
             }
             const jsonItem = JSON.stringify(item);
@@ -448,11 +456,11 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.locationDescription === dataAfter.locationDescription) {
-            return null;
-        } else {
+
+        if (dataBefore.locationDescription != dataAfter.locationDescription) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 locationDescription: dataAfter.locationDescription
             }
             const jsonItem = JSON.stringify(item);
@@ -464,14 +472,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.phoneNumber === dataAfter.phoneNumber) {
-            return null;
-        } else {
+
+        if (dataBefore.phoneNumber != dataAfter.phoneNumber) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 phoneNumber: dataAfter.phoneNumber
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -480,31 +488,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.title === dataAfter.title) {
-            return null;
-        } else {
-            console.log(dataAfter.title);
+
+        if (dataBefore.description != dataAfter.description) {
             const item = {
                 itemId: docId,
-                title: dataAfter.title
-            }
-            const jsonItem = JSON.stringify(item)
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
-        }
-        if (dataBefore.description === dataAfter.description) {
-            return null;
-        } else {
-            const item = {
-                itemId: docId,
+                userId: dataBefore.userId,
                 description: dataAfter.description
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -513,14 +504,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.price === dataAfter.price) {
-            return null;
-        } else {
+
+        if (dataBefore.price != dataAfter.price) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 price: dataAfter.price
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -529,14 +520,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.dateAdded === dataAfter.dateAdded) {
-            return null;
-        } else {
+
+        if (dataBefore.dateAdded != dataAfter.dateAdded) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 dateAdded: dataAfter.dateAdded
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -545,14 +536,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.dateModified === dataAfter.dateModified) {
-            return null;
-        } else {
+
+        if (dataBefore.dateModified != dataAfter.dateModified) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 dateModified: dataAfter.dateModified
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -561,14 +552,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.images === dataAfter.images) {
-            return null;
-        } else {
+
+        if (dataBefore.images != dataAfter.images) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 images: dataAfter.images
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -577,14 +568,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.mondayOpeningHours === dataAfter.mondayOpeningHours) {
-            return null;
-        } else {
+
+        if (dataBefore.mondayOpeningHours != dataAfter.mondayOpeningHours) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 mondayOpeningHours: dataAfter.mondayOpeningHours
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -593,14 +584,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.mondayClosingHours === dataAfter.mondayClosingHours) {
-            return null;
-        } else {
+
+        if (dataBefore.mondayClosingHours != dataAfter.mondayClosingHours) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 mondayClosingHours: dataAfter.mondayClosingHours
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -609,14 +600,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.tuesdayOpeningHours === dataAfter.tuesdayOpeningHours) {
-            return null;
-        } else {
+
+        if (dataBefore.tuesdayOpeningHours != dataAfter.tuesdayOpeningHours) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 tuesdayOpeningHours: dataAfter.tuesdayOpeningHours
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -625,14 +616,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.tuesdayClosingHours === dataAfter.tuesdayClosingHours) {
-            return null;
-        } else {
+
+        if (dataBefore.tuesdayClosingHours != dataAfter.tuesdayClosingHours) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 tuesdayClosingHours: dataAfter.tuesdayClosingHours
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -641,14 +632,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.wednesdayOpeningHours === dataAfter.wednesdayOpeningHours) {
-            return null;
-        } else {
+
+        if (dataBefore.wednesdayOpeningHours != dataAfter.wednesdayOpeningHours) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 wednesdayOpeningHours: dataAfter.wednesdayOpeningHours
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -657,14 +648,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.wednesdayClosingHours === dataAfter.wednesdayClosingHours) {
-            return null;
-        } else {
+
+        if (dataBefore.wednesdayClosingHours != dataAfter.wednesdayClosingHours) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 wednesdayClosingHours: dataAfter.wednesdayClosingHours
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -673,14 +664,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.thursdayOpeningHours === dataAfter.thursdayOpeningHours) {
-            return null;
-        } else {
+
+        if (dataBefore.thursdayOpeningHours != dataAfter.thursdayOpeningHours) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 thursdayOpeningHours: dataAfter.thursdayOpeningHours
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -689,14 +680,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.thursdayClosingHours === dataAfter.thursdayClosingHours) {
-            return null;
-        } else {
+
+        if (dataBefore.thursdayClosingHours != dataAfter.thursdayClosingHours) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 thursdayClosingHours: dataAfter.thursdayClosingHours
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -705,14 +696,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.fridayOpeningHours === dataAfter.fridayOpeningHours) {
-            return null;
-        } else {
+
+        if (dataBefore.fridayOpeningHours != dataAfter.fridayOpeningHours) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 fridayOpeningHours: dataAfter.fridayOpeningHours
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -721,14 +712,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.fridayClosingHours === dataAfter.fridayClosingHours) {
-            return null;
-        } else {
+
+        if (dataBefore.fridayClosingHours != dataAfter.fridayClosingHours) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 fridayClosingHours: dataAfter.fridayClosingHours
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -737,14 +728,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.saturdayOpeningHours === dataAfter.saturdayOpeningHours) {
-            return null;
-        } else {
+
+        if (dataBefore.saturdayOpeningHours != dataAfter.saturdayOpeningHours) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 saturdayOpeningHours: dataAfter.saturdayOpeningHours
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -753,14 +744,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.saturdayClosingHours === dataAfter.saturdayClosingHours) {
-            return null;
-        } else {
+
+        if (dataBefore.saturdayClosingHours != dataAfter.saturdayClosingHours) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 saturdayClosingHours: dataAfter.saturdayClosingHours
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -769,14 +760,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.sundayOpeningHours === dataAfter.sundayOpeningHours) {
-            return null;
-        } else {
+
+        if (dataBefore.sundayOpeningHours != dataAfter.sundayOpeningHours) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 sundayOpeningHours: dataAfter.sundayOpeningHours
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
@@ -785,14 +776,14 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.sundayClosingHours === dataAfter.sundayClosingHours) {
-            return null;
-        } else {
+
+        if (dataBefore.sundayClosingHours != dataAfter.sundayClosingHours) {
             const item = {
                 itemId: docId,
+                userId: dataBefore.userId,
                 sundayClosingHours: dataAfter.sundayClosingHours
             }
-            const jsonItem = JSON.stringify(item)
+            const jsonItem = JSON.stringify(item);
             axios({
                 method: 'POST',
                 url: url,
