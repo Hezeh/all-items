@@ -241,8 +241,8 @@ exports.itemsCollectionCreate = functions.firestore
     .document('items/{itemId}')
     .onCreate(async (snap, context) => {
         const itemId = context.params.itemId;
-        // const url = 'https://api.beammart.app/index';
-        const url = 'http://127.0.0.1:8000/index';
+        const url = 'https://api.beammart.app/index';
+        // const url = 'http://127.0.0.1:8000/index';
         const item = {
             itemId: itemId
         };
@@ -386,8 +386,8 @@ exports.itemsCollectionUpdate = functions.firestore
         const docId = context.params.itemId;
         const dataBefore = change.before.data();
         const dataAfter = change.after.data();
-        // const url = 'https://api.beammart.app/index';
-        const url = 'http://127.0.0.1:8000/index';
+        const url = 'https://api.beammart.app/index';
+        // const url = 'http://127.0.0.1:8000/index';
         // Update document in Elasticsearch
         console.log(dataBefore);
         console.log(dataAfter);
