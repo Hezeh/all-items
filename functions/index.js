@@ -1,6 +1,7 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const axios = require("axios");
+const { database } = require("firebase-admin");
 
 admin.initializeApp();
 
@@ -99,7 +100,23 @@ exports.updateProfileItem = functions.firestore
     .onUpdate(async (snap, context) => {
         // Update the items collection
         itemId = context.params.itemId;
-        await itemsRef.doc(itemId).set({}, { merge: true });
+        const dataBefore = change.before.data();
+        const dataAfter = change.after.data();
+        if (dataAfter.title === dataBefore.title) {
+            return null;
+        } else {
+            await itemsRef.doc(itemId).set({ 'title': dataAfter.title }, { merge: true });
+        }
+        if (dataAfter.description === dataBefore.description) {
+            return null;
+        } else {
+            await itemsRef.doc(itemId).set({ 'description': dataAfter.description }, { merge: true });
+        }
+        if (dataAfter.price === dataBefore.price) {
+            return null;
+        } else {
+            await itemsRef.doc(itemId).set({ 'price': dataAfter.price }, { merge: true });
+        }
     });
 
 // On Profile/{userId} Update -> Update the /items collection
@@ -114,104 +131,104 @@ exports.profileUpdate = functions.firestore
         // Update all the documents in /items collection
         profileSnapshots.forEach(async (doc) => {
             const docId = doc.id;
-            if (dataAfter.businessName == dataBefore.businessName) {
+            if (dataAfter.businessName === dataBefore.businessName) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'businessName': dataAfter.businessName }, { merge: true });
             }
-            if (dataAfter.location == dataBefore.location) {
+            if (dataAfter.location === dataBefore.location) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'location': dataAfter.location }, { merge: true });
             }
-            if (dataAfter.locationDescription == dataBefore.locationDescription) {
+            if (dataAfter.locationDescription === dataBefore.locationDescription) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'locationDescription': dataAfter.locationDescription }, { merge: true });
             }
-            if (dataAfter.businessDescription == dataBefore.businessDescription) {
+            if (dataAfter.businessDescription === dataBefore.businessDescription) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'businessDescription': dataAfter.businessDescription }, { merge: true });
             }
-            if (dataAfter.phoneNumber == dataBefore.phoneNumber) {
+            if (dataAfter.phoneNumber === dataBefore.phoneNumber) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'phoneNumber': dataAfter.phoneNumber }, { merge: true });
             }
             // Monday
-            if (dataAfter.mondayOpeningHours == dataBefore.mondayOpeningHours) {
+            if (dataAfter.mondayOpeningHours === dataBefore.mondayOpeningHours) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'mondayOpeningHours': dataAfter.mondayOpeningHours }, { merge: true });
             }
-            if (dataAfter.mondayClosingHours == dataBefore.mondayClosingHours) {
+            if (dataAfter.mondayClosingHours === dataBefore.mondayClosingHours) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'mondayClosingHours': dataAfter.mondayClosingHours }, { merge: true });
             }
             // Tuesday
-            if (dataAfter.tuesdayOpeningHours == dataBefore.tuesdayOpeningHours) {
+            if (dataAfter.tuesdayOpeningHours === dataBefore.tuesdayOpeningHours) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'tuesdayOpeningHours': dataAfter.tuesdayOpeningHours }, { merge: true });
             }
-            if (dataAfter.tuesdayClosingHours == dataBefore.tuesdayClosingHours) {
+            if (dataAfter.tuesdayClosingHours === dataBefore.tuesdayClosingHours) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'tuesdayClosingHours': dataAfter.tuesdayClosingHours }, { merge: true });
             }
             // Wednesday
-            if (dataAfter.wednesdayOpeningHours == dataBefore.wednesdayOpeningHours) {
+            if (dataAfter.wednesdayOpeningHours === dataBefore.wednesdayOpeningHours) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'wednesdayOpeningHours': dataAfter.wednesdayOpeningHours }, { merge: true });
             }
-            if (dataAfter.wednesdayClosingHours == dataBefore.wednesdayClosingHours) {
+            if (dataAfter.wednesdayClosingHours === dataBefore.wednesdayClosingHours) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'wednesdayClosingHours': dataAfter.wednesdayClosingHours }, { merge: true });
             }
             // Thursday
-            if (dataAfter.thursdayOpeningHours == dataBefore.thursdayOpeningHours) {
+            if (dataAfter.thursdayOpeningHours === dataBefore.thursdayOpeningHours) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'thursdayOpeningHours': dataAfter.thursdayOpeningHours }, { merge: true });
             }
-            if (dataAfter.thursdayClosingHours == dataBefore.thursdayClosingHours) {
+            if (dataAfter.thursdayClosingHours === dataBefore.thursdayClosingHours) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'thursdayClosingHours': dataAfter.thursdayClosingHours }, { merge: true });
             }
             // Friday
-            if (dataAfter.fridayOpeningHours == dataBefore.fridayOpeningHours) {
+            if (dataAfter.fridayOpeningHours === dataBefore.fridayOpeningHours) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'fridayOpeningHours': dataAfter.fridayOpeningHours }, { merge: true });
             }
-            if (dataAfter.fridayClosingHours == dataBefore.fridayClosingHours) {
+            if (dataAfter.fridayClosingHours === dataBefore.fridayClosingHours) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'fridayClosingHours': dataAfter.fridayClosingHours }, { merge: true });
             }
             // Saturday
-            if (dataAfter.saturdayOpeningHours == dataBefore.saturdayOpeningHours) {
+            if (dataAfter.saturdayOpeningHours === dataBefore.saturdayOpeningHours) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'saturdayOpeningHours': dataAfter.saturdayOpeningHours }, { merge: true });
             }
-            if (dataAfter.saturdayClosingHours == dataBefore.saturdayClosingHours) {
+            if (dataAfter.saturdayClosingHours === dataBefore.saturdayClosingHours) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'saturdayClosingHours': dataAfter.saturdayClosingHours }, { merge: true });
             }
             // Sunday
-            if (dataAfter.sundayOpeningHours == dataBefore.sundayOpeningHours) {
+            if (dataAfter.sundayOpeningHours === dataBefore.sundayOpeningHours) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'sundayOpeningHours': dataAfter.sundayOpeningHours }, { merge: true });
             }
-            if (dataAfter.sundayClosingHours == dataBefore.sundayClosingHours) {
+            if (dataAfter.sundayClosingHours === dataBefore.sundayClosingHours) {
                 return null;
             } else {
                 await itemsRef.doc(docId).set({ 'sundayClosingHours': dataAfter.sundayClosingHours }, { merge: true });
@@ -373,7 +390,7 @@ exports.itemsCollectionUpdate = functions.firestore
         // const url = 'http://127.0.0.1:8000/index';
         // Update document in Elasticsearch
 
-        if (dataBefore.businessName == dataBefore.businessName) {
+        if (dataBefore.businessName === dataBefore.businessName) {
             return null;
         } else {
             // await client.index({
@@ -396,7 +413,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.businessDescription == dataBefore.businessDescription) {
+        if (dataBefore.businessDescription === dataBefore.businessDescription) {
             return null;
         } else {
             const item = {
@@ -412,7 +429,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.location == dataBefore.location) {
+        if (dataBefore.location === dataBefore.location) {
             return null;
         } else {
             const item = {
@@ -428,7 +445,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.locationDescription == dataBefore.locationDescription) {
+        if (dataBefore.locationDescription === dataBefore.locationDescription) {
             return null;
         } else {
             const item = {
@@ -444,7 +461,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.phoneNumber == dataBefore.phoneNumber) {
+        if (dataBefore.phoneNumber === dataBefore.phoneNumber) {
             return null;
         } else {
             const item = {
@@ -460,7 +477,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.title == dataBefore.title) {
+        if (dataBefore.title === dataBefore.title) {
             return null;
         } else {
             const item = {
@@ -476,7 +493,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.description == dataBefore.description) {
+        if (dataBefore.description === dataBefore.description) {
             return null;
         } else {
             const item = {
@@ -492,7 +509,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.price == dataBefore.price) {
+        if (dataBefore.price === dataBefore.price) {
             return null;
         } else {
             const item = {
@@ -508,7 +525,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.dateAdded == dataBefore.dateAdded) {
+        if (dataBefore.dateAdded === dataBefore.dateAdded) {
             return null;
         } else {
             const item = {
@@ -524,7 +541,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.dateModified == dataBefore.dateModified) {
+        if (dataBefore.dateModified === dataBefore.dateModified) {
             return null;
         } else {
             const item = {
@@ -540,7 +557,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.images == dataBefore.images) {
+        if (dataBefore.images === dataBefore.images) {
             return null;
         } else {
             const item = {
@@ -556,7 +573,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.mondayOpeningHours == dataBefore.mondayOpeningHours) {
+        if (dataBefore.mondayOpeningHours === dataBefore.mondayOpeningHours) {
             return null;
         } else {
             const item = {
@@ -572,7 +589,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.mondayClosingHours == dataBefore.mondayClosingHours) {
+        if (dataBefore.mondayClosingHours === dataBefore.mondayClosingHours) {
             return null;
         } else {
             const item = {
@@ -588,7 +605,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.tuesdayOpeningHours == dataBefore.tuesdayOpeningHours) {
+        if (dataBefore.tuesdayOpeningHours === dataBefore.tuesdayOpeningHours) {
             return null;
         } else {
             const item = {
@@ -604,7 +621,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.tuesdayClosingHours == dataBefore.tuesdayClosingHours) {
+        if (dataBefore.tuesdayClosingHours === dataBefore.tuesdayClosingHours) {
             return null;
         } else {
             const item = {
@@ -620,7 +637,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.wednesdayOpeningHours == dataBefore.wednesdayOpeningHours) {
+        if (dataBefore.wednesdayOpeningHours === dataBefore.wednesdayOpeningHours) {
             return null;
         } else {
             const item = {
@@ -636,7 +653,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.wednesdayClosingHours == dataBefore.wednesdayClosingHours) {
+        if (dataBefore.wednesdayClosingHours === dataBefore.wednesdayClosingHours) {
             return null;
         } else {
             const item = {
@@ -652,7 +669,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.thursdayOpeningHours == dataBefore.thursdayOpeningHours) {
+        if (dataBefore.thursdayOpeningHours === dataBefore.thursdayOpeningHours) {
             return null;
         } else {
             const item = {
@@ -668,7 +685,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.thursdayClosingHours == dataBefore.thursdayClosingHours) {
+        if (dataBefore.thursdayClosingHours === dataBefore.thursdayClosingHours) {
             return null;
         } else {
             const item = {
@@ -684,7 +701,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.fridayOpeningHours == dataBefore.fridayOpeningHours) {
+        if (dataBefore.fridayOpeningHours === dataBefore.fridayOpeningHours) {
             return null;
         } else {
             const item = {
@@ -700,7 +717,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.fridayClosingHours == dataBefore.fridayClosingHours) {
+        if (dataBefore.fridayClosingHours === dataBefore.fridayClosingHours) {
             return null;
         } else {
             const item = {
@@ -716,7 +733,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.saturdayOpeningHours == dataBefore.saturdayOpeningHours) {
+        if (dataBefore.saturdayOpeningHours === dataBefore.saturdayOpeningHours) {
             return null;
         } else {
             const item = {
@@ -732,7 +749,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.saturdayClosingHours == dataBefore.saturdayClosingHours) {
+        if (dataBefore.saturdayClosingHours === dataBefore.saturdayClosingHours) {
             return null;
         } else {
             const item = {
@@ -748,7 +765,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.sundayOpeningHours == dataBefore.sundayOpeningHours) {
+        if (dataBefore.sundayOpeningHours === dataBefore.sundayOpeningHours) {
             return null;
         } else {
             const item = {
@@ -764,7 +781,7 @@ exports.itemsCollectionUpdate = functions.firestore
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
         }
-        if (dataBefore.sundayClosingHours == dataBefore.sundayClosingHours) {
+        if (dataBefore.sundayClosingHours === dataBefore.sundayClosingHours) {
             return null;
         } else {
             const item = {
