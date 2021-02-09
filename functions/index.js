@@ -389,409 +389,119 @@ exports.itemsCollectionUpdate = functions.firestore
         const url = 'https://api.beammart.app/index';
         // const url = 'http://127.0.0.1:8000/index';
         // Update document in Elasticsearch
-        console.log(dataBefore);
-        console.log(dataAfter);
-        console.log(`Title ${dataAfter.title}`);
+        const item = {
+            itemId: docId,
+            userId: dataBefore.userId,
+        }
 
         if (dataBefore.title != dataAfter.title) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                title: dataAfter.title
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.title = dataAfter.title;
         }
 
         if (dataBefore.businessName != dataAfter.businessName) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                businessName: dataAfter.businessName
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.businessName = dataAfter.businessName;
         }
 
         if (dataBefore.businessDescription != dataAfter.businessDescription) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                businessDescription: dataAfter.businessDescription
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.businessDescription = dataAfter.businessDescription;
         }
 
         if (dataBefore.location != dataAfter.location) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                location: dataAfter.location
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.location = dataAfter.location;
         }
 
         if (dataBefore.locationDescription != dataAfter.locationDescription) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                locationDescription: dataAfter.locationDescription
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.locationDescription = dataAfter.locationDescription;
         }
 
         if (dataBefore.phoneNumber != dataAfter.phoneNumber) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                phoneNumber: dataAfter.phoneNumber
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.phoneNumber = dataAfter.phoneNumber;
         }
 
         if (dataBefore.description != dataAfter.description) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                description: dataAfter.description
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.description = dataAfter.description;
         }
 
         if (dataBefore.price != dataAfter.price) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                price: dataAfter.price
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.price = dataAfter.price;
         }
 
         if (dataBefore.dateAdded != dataAfter.dateAdded) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                dateAdded: dataAfter.dateAdded
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.dateAdded = dataAfter.dateAdded;
         }
 
         if (dataBefore.dateModified != dataAfter.dateModified) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                dateModified: dataAfter.dateModified
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.dateModified = dataAfter.dateModified;
         }
 
         if (dataBefore.images != dataAfter.images) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                images: dataAfter.images
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.images = dataAfter.images;
         }
 
         if (dataBefore.mondayOpeningHours != dataAfter.mondayOpeningHours) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                mondayOpeningHours: dataAfter.mondayOpeningHours
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.mondayOpeningHours = dataAfter.mondayOpeningHours;
         }
 
         if (dataBefore.mondayClosingHours != dataAfter.mondayClosingHours) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                mondayClosingHours: dataAfter.mondayClosingHours
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.mondayClosingHours = dataAfter.mondayClosingHours;
         }
 
         if (dataBefore.tuesdayOpeningHours != dataAfter.tuesdayOpeningHours) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                tuesdayOpeningHours: dataAfter.tuesdayOpeningHours
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.tuesdayOpeningHours = dataAfter.tuesdayOpeningHours;
         }
 
         if (dataBefore.tuesdayClosingHours != dataAfter.tuesdayClosingHours) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                tuesdayClosingHours: dataAfter.tuesdayClosingHours
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.tuesdayClosingHours = dataAfter.tuesdayClosingHours;
         }
 
         if (dataBefore.wednesdayOpeningHours != dataAfter.wednesdayOpeningHours) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                wednesdayOpeningHours: dataAfter.wednesdayOpeningHours
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.wednesdayOpeningHours = dataAfter.wednesdayOpeningHours;
         }
 
         if (dataBefore.wednesdayClosingHours != dataAfter.wednesdayClosingHours) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                wednesdayClosingHours: dataAfter.wednesdayClosingHours
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.wednesdayClosingHours = dataAfter.wednesdayClosingHours;
         }
 
         if (dataBefore.thursdayOpeningHours != dataAfter.thursdayOpeningHours) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                thursdayOpeningHours: dataAfter.thursdayOpeningHours
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.thursdayOpeningHours = dataAfter.thursdayOpeningHours;
         }
 
         if (dataBefore.thursdayClosingHours != dataAfter.thursdayClosingHours) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                thursdayClosingHours: dataAfter.thursdayClosingHours
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.thursdayClosingHours = dataAfter.thursdayClosingHours;
         }
 
         if (dataBefore.fridayOpeningHours != dataAfter.fridayOpeningHours) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                fridayOpeningHours: dataAfter.fridayOpeningHours
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.fridayOpeningHours = dataAfter.fridayOpeningHours;
         }
 
         if (dataBefore.fridayClosingHours != dataAfter.fridayClosingHours) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                fridayClosingHours: dataAfter.fridayClosingHours
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.fridayClosingHours = dataAfter.fridayClosingHours;
         }
 
         if (dataBefore.saturdayOpeningHours != dataAfter.saturdayOpeningHours) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                saturdayOpeningHours: dataAfter.saturdayOpeningHours
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.saturdayOpeningHours = dataAfter.saturdayOpeningHours;
         }
 
         if (dataBefore.saturdayClosingHours != dataAfter.saturdayClosingHours) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                saturdayClosingHours: dataAfter.saturdayClosingHours
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.saturdayClosingHours = dataAfter.saturdayClosingHours;
         }
 
         if (dataBefore.sundayOpeningHours != dataAfter.sundayOpeningHours) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                sundayOpeningHours: dataAfter.sundayOpeningHours
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.sundayOpeningHours = dataAfter.sundayOpeningHours;
         }
 
         if (dataBefore.sundayClosingHours != dataAfter.sundayClosingHours) {
-            const item = {
-                itemId: docId,
-                userId: dataBefore.userId,
-                sundayClosingHours: dataAfter.sundayClosingHours
-            }
-            const jsonItem = JSON.stringify(item);
-            axios({
-                method: 'POST',
-                url: url,
-                data: jsonItem
-            })
-                .then(data => console.log(data))
-                .catch(err => console.log(err));
+            item.sundayClosingHours = dataAfter.sundayClosingHours;
         }
+
+        const jsonItem = JSON.stringify(item);
+        axios({
+            method: 'POST',
+            url: url,
+            data: jsonItem
+        })
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
     });
 
 // On Item Delete -> Delete Item in Elasticsearch
