@@ -117,6 +117,11 @@ exports.updateProfileItem = functions.firestore
         } else {
             await itemsRef.doc(itemId).set({ 'price': dataAfter.price }, { merge: true });
         }
+        if (dataAfter.inStock === dataBefore.inStock) {
+            return null;
+        } else {
+            await itemsRef.doc(itemId).set({ 'inStock': dataAfter.inStock }, { merge: true });
+        }
     });
 
 // On Profile/{userId} Update -> Update the /items collection
@@ -485,18 +490,3 @@ exports.itemsCollectionDelete = functions.firestore
             data: jsonItem
         })
     })
-
-// const url = 'https://api.beammart.app/index';
-// const user = {
-//     name: "Said",
-//     id: 21
-// }
-// axios({
-//     method: "POST",
-//     url: url,
-//     data: {
-//         user
-//     }
-// })
-//     .then(data => console.log(data))
-//     .catch(err => console.log(err))
