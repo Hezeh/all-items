@@ -24,65 +24,86 @@ exports.createProfileItem = functions.firestore
         const _imageUrls = newValue.images;
         const userId = context.params.userId;
         const itemId = context.params.itemId;
+        const _inStock = newValue.inStock;
+        const _category = newValue.category;
+        const _subCategory = newValue.subCategory;
 
         const doc = await db.collection('profile').doc(`${userId}`).get();
 
         if (!doc.exists) {
             console.log('No such document!');
         } else {
-            console.log('Document data:', doc.data());
-        }
-        // console.log(doc.data()['location']['_latitude'])
-        const _location = doc.data()['gpsLocation'];
-        const _phoneNumber = doc.data()['phoneNumber'];
-        const _businessName = doc.data()['businessName'];
-        const _businessDescription = doc.data()['businessDescription'];
-        const _locationDescription = doc.data()['locationDescription'];
-        const _mondayOpeningHours = doc.data()['mondayOpeningHours'];
-        const _mondayClosingHours = doc.data()['mondayClosingHours'];
-        const _tuesdayOpeningHours = doc.data()['tuesdayOpeningHours'];
-        const _tuesdayClosingHours = doc.data()['tuesdayClosingHours'];
-        const _wednesdayOpeningHours = doc.data()['wednesdayOpeningHours'];
-        const _wednesdayClosingHours = doc.data()['wednesdayClosingHours'];
-        const _thursdayOpeningHours = doc.data()['thursdayOpeningHours'];
-        const _thursdayClosingHours = doc.data()['thursdayClosingHours'];
-        const _fridayOpeningHours = doc.data()['fridayOpeningHours'];
-        const _fridayClosingHours = doc.data()['fridayClosingHours'];
-        const _saturdayOpeningHours = doc.data()['saturdayOpeningHours'];
-        const _saturdayClosingHours = doc.data()['saturdayClosingHours'];
-        const _sundayOpeningHours = doc.data()['sundayOpeningHours'];
-        const _sundayClosingHours = doc.data()['sundayClosingHours'];
+            const _location = doc.data()['gpsLocation'];
+            const _phoneNumber = doc.data()['phoneNumber'];
+            const _businessName = doc.data()['businessName'];
+            const _businessDescription = doc.data()['businessDescription'];
+            const _locationDescription = doc.data()['locationDescription'];
+            const _isMondayOpen = doc.data()['isMondayOpen'];
+            const _isTuesdayOpen = doc.data()['isTuesdayOpen'];
+            const _isWednesdayOpen = doc.data()['isWednesdayOpen'];
+            const _isThursdayOpen = doc.data()['isThursdayOpen'];
+            const _isFridayOpen = doc.data()['isFridayOpen'];
+            const _isSaturdayOpen = doc.data()['isSaturdayOpen'];
+            const _isSundayOpen = doc.data()['isSundayOpen'];
+            const _mondayOpeningHours = doc.data()['mondayOpeningHours'];
+            const _mondayClosingHours = doc.data()['mondayClosingHours'];
+            const _tuesdayOpeningHours = doc.data()['tuesdayOpeningHours'];
+            const _tuesdayClosingHours = doc.data()['tuesdayClosingHours'];
+            const _wednesdayOpeningHours = doc.data()['wednesdayOpeningHours'];
+            const _wednesdayClosingHours = doc.data()['wednesdayClosingHours'];
+            const _thursdayOpeningHours = doc.data()['thursdayOpeningHours'];
+            const _thursdayClosingHours = doc.data()['thursdayClosingHours'];
+            const _fridayOpeningHours = doc.data()['fridayOpeningHours'];
+            const _fridayClosingHours = doc.data()['fridayClosingHours'];
+            const _saturdayOpeningHours = doc.data()['saturdayOpeningHours'];
+            const _saturdayClosingHours = doc.data()['saturdayClosingHours'];
+            const _sundayOpeningHours = doc.data()['sundayOpeningHours'];
+            const _sundayClosingHours = doc.data()['sundayClosingHours'];
+            const _businessPhotos = doc.data()['businessPhotos'];
 
-        // Create doc in firebase collection
-        await itemsRef.doc(`${itemId}`).set({
-            itemId: itemId,
-            userId: userId,
-            location: _location,
-            phoneNumber: _phoneNumber,
-            businessName: _businessName,
-            businessDescription: _businessDescription,
-            locationDescription: _locationDescription,
-            title: _title,
-            description: _description,
-            price: _price,
-            dateAdded: _dateAdded,
-            dateModified: _dateModified,
-            images: _imageUrls,
-            mondayOpeningHours: _mondayOpeningHours,
-            mondayClosingHours: _mondayClosingHours,
-            tuesdayOpeningHours: _tuesdayOpeningHours,
-            tuesdayClosingHours: _tuesdayClosingHours,
-            wednesdayOpeningHours: _wednesdayOpeningHours,
-            wednesdayClosingHours: _wednesdayClosingHours,
-            thursdayOpeningHours: _thursdayOpeningHours,
-            thursdayClosingHours: _thursdayClosingHours,
-            fridayOpeningHours: _fridayOpeningHours,
-            fridayClosingHours: _fridayClosingHours,
-            saturdayOpeningHours: _saturdayOpeningHours,
-            saturdayClosingHours: _saturdayClosingHours,
-            sundayOpeningHours: _sundayOpeningHours,
-            sundayClosingHours: _sundayClosingHours
-        });
+            // Create doc in firebase collection
+            await itemsRef.doc(`${itemId}`).set({
+                itemId: itemId,
+                userId: userId,
+                location: _location,
+                phoneNumber: _phoneNumber,
+                businessName: _businessName,
+                businessDescription: _businessDescription,
+                locationDescription: _locationDescription,
+                title: _title,
+                description: _description,
+                price: _price,
+                dateAdded: _dateAdded,
+                dateModified: _dateModified,
+                images: _imageUrls,
+                inStock: _inStock,
+                category: _category,
+                subCategory: _subCategory,
+                mondayOpeningHours: _mondayOpeningHours,
+                mondayClosingHours: _mondayClosingHours,
+                tuesdayOpeningHours: _tuesdayOpeningHours,
+                tuesdayClosingHours: _tuesdayClosingHours,
+                wednesdayOpeningHours: _wednesdayOpeningHours,
+                wednesdayClosingHours: _wednesdayClosingHours,
+                thursdayOpeningHours: _thursdayOpeningHours,
+                thursdayClosingHours: _thursdayClosingHours,
+                fridayOpeningHours: _fridayOpeningHours,
+                fridayClosingHours: _fridayClosingHours,
+                saturdayOpeningHours: _saturdayOpeningHours,
+                saturdayClosingHours: _saturdayClosingHours,
+                sundayOpeningHours: _sundayOpeningHours,
+                sundayClosingHours: _sundayClosingHours,
+                isMondayOpen: _isMondayOpen,
+                isTuesdayOpen: _isTuesdayOpen,
+                isWednesdayOpen: _isWednesdayOpen,
+                isThursdayOpen: _isThursdayOpen,
+                isFridayOpen: _isFridayOpen,
+                isSaturdayOpen: _isSaturdayOpen,
+                isSundayOpen: _isSundayOpen,
+                businessPhotos: _businessPhotos,
+            });
+        }
+
     });
 
 // on Profile/{userId}/items/{itemId} document deleted
@@ -122,6 +143,11 @@ exports.updateProfileItem = functions.firestore
         } else {
             await itemsRef.doc(itemId).set({ 'inStock': dataAfter.inStock }, { merge: true });
         }
+        if (dataAfter.dateModified === dataBefore.dateModified) {
+            return null;
+        } else {
+            await itemsRef.doc(itemId).set({ 'dateModified': dataAfter.dateModified }, { merge: true });
+        }
     });
 
 // On Profile/{userId} Update -> Update the /items collection
@@ -138,13 +164,13 @@ exports.profileUpdate = functions.firestore
             const docId = doc.id;
             if (dataAfter.businessName != dataBefore.businessName) {
                 await itemsRef.doc(docId).set({ 'businessName': dataAfter.businessName }, { merge: true });
-            } 
+            }
             if (dataAfter.location != dataBefore.location) {
                 await itemsRef.doc(docId).set({ 'location': dataAfter.location }, { merge: true });
-            } 
+            }
             if (dataAfter.locationDescription != dataBefore.locationDescription) {
                 await itemsRef.doc(docId).set({ 'locationDescription': dataAfter.locationDescription }, { merge: true });
-            } 
+            }
             if (dataAfter.businessDescription != dataBefore.businessDescription) {
                 await itemsRef.doc(docId).set({ 'businessDescription': dataAfter.businessDescription }, { merge: true });
             }
@@ -154,52 +180,77 @@ exports.profileUpdate = functions.firestore
             // Monday
             if (dataAfter.mondayOpeningHours != dataBefore.mondayOpeningHours) {
                 await itemsRef.doc(docId).set({ 'mondayOpeningHours': dataAfter.mondayOpeningHours }, { merge: true });
-            } 
+            }
             if (dataAfter.mondayClosingHours != dataBefore.mondayClosingHours) {
                 await itemsRef.doc(docId).set({ 'mondayClosingHours': dataAfter.mondayClosingHours }, { merge: true });
-            } 
+            }
             // Tuesday
             if (dataAfter.tuesdayOpeningHours != dataBefore.tuesdayOpeningHours) {
                 await itemsRef.doc(docId).set({ 'tuesdayOpeningHours': dataAfter.tuesdayOpeningHours }, { merge: true });
-            } 
+            }
             if (dataAfter.tuesdayClosingHours != dataBefore.tuesdayClosingHours) {
                 await itemsRef.doc(docId).set({ 'tuesdayClosingHours': dataAfter.tuesdayClosingHours }, { merge: true });
-            } 
+            }
             // Wednesday
             if (dataAfter.wednesdayOpeningHours != dataBefore.wednesdayOpeningHours) {
                 await itemsRef.doc(docId).set({ 'wednesdayOpeningHours': dataAfter.wednesdayOpeningHours }, { merge: true });
-            } 
+            }
             if (dataAfter.wednesdayClosingHours != dataBefore.wednesdayClosingHours) {
                 await itemsRef.doc(docId).set({ 'wednesdayClosingHours': dataAfter.wednesdayClosingHours }, { merge: true });
             }
             // Thursday
             if (dataAfter.thursdayOpeningHours != dataBefore.thursdayOpeningHours) {
                 await itemsRef.doc(docId).set({ 'thursdayOpeningHours': dataAfter.thursdayOpeningHours }, { merge: true });
-            } 
+            }
             if (dataAfter.thursdayClosingHours != dataBefore.thursdayClosingHours) {
                 await itemsRef.doc(docId).set({ 'thursdayClosingHours': dataAfter.thursdayClosingHours }, { merge: true });
-            } 
+            }
             // Friday
             if (dataAfter.fridayOpeningHours != dataBefore.fridayOpeningHours) {
                 await itemsRef.doc(docId).set({ 'fridayOpeningHours': dataAfter.fridayOpeningHours }, { merge: true });
-            } 
+            }
             if (dataAfter.fridayClosingHours != dataBefore.fridayClosingHours) {
                 await itemsRef.doc(docId).set({ 'fridayClosingHours': dataAfter.fridayClosingHours }, { merge: true });
-            } 
+            }
             // Saturday
             if (dataAfter.saturdayOpeningHours != dataBefore.saturdayOpeningHours) {
                 await itemsRef.doc(docId).set({ 'saturdayOpeningHours': dataAfter.saturdayOpeningHours }, { merge: true });
-            } 
+            }
             if (dataAfter.saturdayClosingHours != dataBefore.saturdayClosingHours) {
                 await itemsRef.doc(docId).set({ 'saturdayClosingHours': dataAfter.saturdayClosingHours }, { merge: true });
-            } 
+            }
             // Sunday
             if (dataAfter.sundayOpeningHours != dataBefore.sundayOpeningHours) {
                 await itemsRef.doc(docId).set({ 'sundayOpeningHours': dataAfter.sundayOpeningHours }, { merge: true });
-            } 
+            }
             if (dataAfter.sundayClosingHours != dataBefore.sundayClosingHours) {
                 await itemsRef.doc(docId).set({ 'sundayClosingHours': dataAfter.sundayClosingHours }, { merge: true });
+            }
+            if (dataAfter.businessPhotos != dataBefore.businessPhotos) {
+                await itemsRef.doc(itemId).set({ 'businessPhotos': dataAfter.businessPhotos }, { merge: true });
             } 
+            // Is the business open on the various weekdays
+            if (dataAfter.isMondayOpen != dataBefore.isMondayOpen) {
+                await itemsRef.doc(itemId).set({ 'isMondayOpen': dataAfter.isMondayOpen }, { merge: true });
+            } 
+            if (dataAfter.isTuesdayOpen != dataBefore.isTuesdayOpen) {
+                await itemsRef.doc(itemId).set({ 'isTuesdayOpen': dataAfter.isTuesdayOpen }, { merge: true });
+            }
+            if (dataAfter.isWednesdayOpen != dataBefore.isWednesdayOpen) {
+                await itemsRef.doc(itemId).set({ 'isWednesdayOpen': dataAfter.isWednesdayOpen }, { merge: true });
+            } 
+            if (dataAfter.isThursdayOpen != dataBefore.isThursdayOpen) {
+                await itemsRef.doc(itemId).set({ 'isThursdayOpen': dataAfter.isThursdayOpen }, { merge: true });
+            } 
+            if (dataAfter.isFridayOpen != dataBefore.isFridayOpen) {
+                await itemsRef.doc(itemId).set({ 'isFridayOpen': dataAfter.isFridayOpen }, { merge: true });
+            } 
+            if (dataAfter.isSaturdayOpen != dataBefore.isSaturdayOpen) {
+                await itemsRef.doc(itemId).set({ 'isSaturdayOpen': dataAfter.isSaturdayOpen }, { merge: true });
+            } 
+            if (dataAfter.isSundayOpen != dataBefore.isSundayOpen) {
+                await itemsRef.doc(itemId).set({ 'isSundayOpen': dataAfter.isSundayOpen }, { merge: true });
+            }
         });
     });
 
@@ -245,7 +296,39 @@ exports.itemsCollectionCreate = functions.firestore
         const saturdayClosingHours = data.saturdayClosingHours;
         const sundayOpeningHours = data.sundayOpeningHours;
         const sundayClosingHours = data.sundayClosingHours;
+        const businessPhotos = data.businessPhotos;
+        const isMondayOpen = data.isMondayOpen;
+        const isTuesdayOpen = data.isTuesdayOpen;
+        const isWednesdayOpen = data.isWednesdayOpen;
+        const isThursdayOpen = data.isThursdayOpen;
+        const isFridayOpen = data.isFridayOpen;
+        const isSaturdayOpen = data.isSaturdayOpen;
+        const isSundayOpen = data.isSundayOpen;
 
+        if (businessPhotos != null) {
+            item.businessPhotos = businessPhotos;
+        }
+        if (isMondayOpen != null) {
+            item.isMondayOpen = isMondayOpen;
+        }
+        if (isTuesdayOpen != null) {
+            item.isTuesdayOpen = isTuesdayOpen;
+        }
+        if (isWednesdayOpen != null) {
+            item.isWednesdayOpen = isWednesdayOpen;
+        }
+        if (isThursdayOpen != null) {
+            item.isThursdayOpen = isThursdayOpen;
+        }
+        if (isFridayOpen != null) {
+            item.isFridayOpen = isFridayOpen;
+        }
+        if (isSaturdayOpen != null) {
+            item.isSaturdayOpen = isSaturdayOpen;
+        }
+        if (isSundayOpen != null) {
+            item.isSundayOpen = isSundayOpen;
+        }
         if (userId != null) {
             item.userId = userId;
         }
@@ -335,7 +418,6 @@ exports.itemsCollectionCreate = functions.firestore
         }
 
         const jsonItem = JSON.stringify(item);
-        console.log(jsonItem);
         axios({
             method: 'POST',
             url: url,
@@ -459,6 +541,30 @@ exports.itemsCollectionUpdate = functions.firestore
 
         if (dataBefore.sundayClosingHours != dataAfter.sundayClosingHours) {
             item.sundayClosingHours = dataAfter.sundayClosingHours;
+        }
+        if (dataBefore.businessPhotos != dataAfter.businessPhotos) {
+            item.businessPhotos = dataAfter.businessPhotos;
+        }
+        if (dataBefore.isMondayOpen != dataAfter.isMondayOpen) {
+            item.isMondayOpen = dataAfter.isMondayOpen;
+        }
+        if (dataBefore.isTuesdayOpen != dataAfter.isTuesdayOpen) {
+            item.isTuesdayOpen = dataAfter.isTuesdayOpen;
+        }
+        if (dataBefore.isWednesdayOpen != dataAfter.isWednesdayOpen) {
+            item.isWednesdayOpen = dataAfter.isWednesdayOpen;
+        }
+        if (dataBefore.isThursdayOpen != dataAfter.isThursdayOpen) {
+            item.isThursdayOpen = dataAfter.isThursdayOpen;
+        }
+        if (dataBefore.isFridayOpen != dataAfter.isFridayOpen) {
+            item.isFridayOpen = dataAfter.isFridayOpen;
+        }
+        if (dataBefore.isSaturdayOpen != dataAfter.isSaturdayOpen) {
+            item.isSaturdayOpen = dataAfter.isSaturdayOpen;
+        }
+        if (dataBefore.isSundayOpen != dataAfter.isSundayOpen) {
+            item.isSundayOpen = dataAfter.isSundayOpen;
         }
 
         const jsonItem = JSON.stringify(item);
