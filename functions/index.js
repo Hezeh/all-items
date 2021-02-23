@@ -59,51 +59,96 @@ exports.createProfileItem = functions.firestore
             const _saturdayClosingHours = doc.data()['saturdayClosingHours'];
             const _sundayOpeningHours = doc.data()['sundayOpeningHours'];
             const _sundayClosingHours = doc.data()['sundayClosingHours'];
-            const _businessPhotos = doc.data()['businessPhotos'];
+            const _businessProfilePhoto = doc.data()['businessProfilePhoto'];
+
+            const _data = {}
+
+            if (_location != null) {
+                _data['location'] = _location;
+            }
+            if (_phoneNumber != null) {
+                _data['phoneNumber'] = _phoneNumber;
+            }
+            if (_businessName != null) {
+                _data['businessName'] = _businessName;
+            }
+            if (_businessDescription != null) {
+                _data['businessDescription'] = _businessDescription;
+            }
+            if (_locationDescription != null) {
+                _data['locationDescription'] = _locationDescription;
+            }
+            if (_isMondayOpen != null) {
+                _data['isMondayOpen'] = _isMondayOpen;
+            }
+            if (_isTuesdayOpen != null) {
+                _data['isTuesdayOpen'] = _isTuesdayOpen;
+            }
+            if (_isWednesdayOpen != null) {
+                _data['isWednesdayOpen'] = _isWednesdayOpen;
+            }
+            if (_isThursdayOpen != null) {
+                _data['isThursdayOpen'] = _isThursdayOpen;
+            }
+            if (_isFridayOpen != null) {
+                _data['isFridayOpen'] = _isFridayOpen;
+            }
+            if (_isSaturdayOpen != null) {
+                _data['isSaturdayOpen'] = _isSaturdayOpen;
+            }
+            if (_isSundayOpen != null) {
+                _data['isSundayOpen'] = _isSundayOpen;
+            }
+            if (_mondayOpeningHours != null) {
+                _data['mondayOpeningHours'] = _mondayOpeningHours;
+            }
+            if (_mondayClosingHours != null) {
+                _data['mondayClosingHours'] = _mondayClosingHours;
+            }
+            if (_tuesdayOpeningHours != null) {
+                _data['tuesdayOpeningHours'] = _tuesdayOpeningHours;
+            }
+            if (_tuesdayClosingHours != null) {
+                _data['tuesdayClosingHours'] = _tuesdayClosingHours;
+            }
+            if (_wednesdayOpeningHours != null) {
+                _data['wednesdayOpeningHours'] = _wednesdayOpeningHours;
+            }
+            if (_wednesdayClosingHours != null) {
+                _data['wednesdayClosingHours'] = _wednesdayClosingHours;
+            }
+    
+            if (_thursdayOpeningHours != null) {
+                _data['thursdayOpeningHours'] = _thursdayOpeningHours;
+            }
+            if (_thursdayClosingHours != null) {
+                _data['thursdayClosingHours'] = _thursdayClosingHours;
+            }
+            if (_fridayOpeningHours != null) {
+                _data['fridayOpeningHours'] = _fridayOpeningHours;
+            }
+            if (_fridayClosingHours != null) {
+                _data['fridayClosingHours'] = _fridayClosingHours;
+            }
+            if (_saturdayOpeningHours != null) {
+                _data['saturdayOpeningHours'] = _saturdayOpeningHours;
+            }
+            if (_saturdayClosingHours != null) {
+                _data['saturdayClosingHours'] = _saturdayClosingHours;
+            }
+            if (_sundayOpeningHours != null) {
+                _data['sundayOpeningHours'] = _sundayOpeningHours;
+            }
+            if (_sundayClosingHours != null) {
+                _data['sundayClosingHours'] = _sundayClosingHours;
+            }
+            if (_businessProfilePhoto != null) {
+                _data['businessProfilePhoto'] = _businessProfilePhoto;
+            }
 
             // Create doc in firebase collection
-            await itemsRef.doc(`${itemId}`).set({
-                itemId: itemId,
-                userId: userId,
-                location: _location,
-                phoneNumber: _phoneNumber,
-                businessName: _businessName,
-                businessDescription: _businessDescription,
-                locationDescription: _locationDescription,
-                title: _title,
-                description: _description,
-                price: _price,
-                dateAdded: _dateAdded,
-                dateModified: _dateModified,
-                images: _imageUrls,
-                inStock: _inStock,
-                category: _category,
-                subCategory: _subCategory,
-                mondayOpeningHours: _mondayOpeningHours,
-                mondayClosingHours: _mondayClosingHours,
-                tuesdayOpeningHours: _tuesdayOpeningHours,
-                tuesdayClosingHours: _tuesdayClosingHours,
-                wednesdayOpeningHours: _wednesdayOpeningHours,
-                wednesdayClosingHours: _wednesdayClosingHours,
-                thursdayOpeningHours: _thursdayOpeningHours,
-                thursdayClosingHours: _thursdayClosingHours,
-                fridayOpeningHours: _fridayOpeningHours,
-                fridayClosingHours: _fridayClosingHours,
-                saturdayOpeningHours: _saturdayOpeningHours,
-                saturdayClosingHours: _saturdayClosingHours,
-                sundayOpeningHours: _sundayOpeningHours,
-                sundayClosingHours: _sundayClosingHours,
-                isMondayOpen: _isMondayOpen,
-                isTuesdayOpen: _isTuesdayOpen,
-                isWednesdayOpen: _isWednesdayOpen,
-                isThursdayOpen: _isThursdayOpen,
-                isFridayOpen: _isFridayOpen,
-                isSaturdayOpen: _isSaturdayOpen,
-                isSundayOpen: _isSundayOpen,
-                businessPhotos: _businessPhotos,
-            });
+            await itemsRef.doc(`${itemId}`).set(_data);
         }
-
     });
 
 // on Profile/{userId}/items/{itemId} document deleted
