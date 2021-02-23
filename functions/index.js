@@ -117,7 +117,6 @@ exports.createProfileItem = functions.firestore
             if (_wednesdayClosingHours != null) {
                 _data['wednesdayClosingHours'] = _wednesdayClosingHours;
             }
-    
             if (_thursdayOpeningHours != null) {
                 _data['thursdayOpeningHours'] = _thursdayOpeningHours;
             }
@@ -144,6 +143,36 @@ exports.createProfileItem = functions.firestore
             }
             if (_businessProfilePhoto != null) {
                 _data['businessProfilePhoto'] = _businessProfilePhoto;
+            }
+            if (_title != null) {
+                _data['title'] = _title;
+            }
+            if (_price != null) {
+                _data['price'] = _price;
+            }
+            if (_description != null) {
+                _data['description'] = description;
+            }
+            if (_dateAdded != null) {
+                _data['dateAdded'] = _dateAdded;
+            }
+            if (_dateModified != null) {
+                _data['dateModified'] = _dateModified;
+            }
+            if (_imageUrls != null) {
+                _data['imageUrls'] = _imageUrls;
+            }
+            if (_inStock != null) {
+                _data['inStock'] = _inStock;
+            }
+            if (_category != null) {
+                _data['category'] = _category;
+            }
+            if (_subCategory != null) {
+                _data['subCategory'] = _subCategory;
+            }
+            if (_userId != null) {
+                _data['userId'] = userId;
             }
 
             // Create doc in firebase collection
@@ -463,6 +492,7 @@ exports.itemsCollectionCreate = functions.firestore
         }
 
         const jsonItem = JSON.stringify(item);
+        console.log(jsonItem);
         axios({
             method: 'POST',
             url: url,
