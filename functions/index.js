@@ -171,7 +171,7 @@ exports.createProfileItem = functions.firestore
             if (_subCategory != null) {
                 _data['subCategory'] = _subCategory;
             }
-            if (_userId != null) {
+            if (userId != null) {
                 _data['userId'] = userId;
             }
 
