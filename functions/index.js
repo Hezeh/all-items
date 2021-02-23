@@ -151,7 +151,7 @@ exports.createProfileItem = functions.firestore
                 _data['price'] = _price;
             }
             if (_description != null) {
-                _data['description'] = description;
+                _data['description'] = _description;
             }
             if (_dateAdded != null) {
                 _data['dateAdded'] = _dateAdded;
