@@ -341,7 +341,7 @@ exports.itemsCollectionCreate = functions.firestore
         const saturdayClosingHours = data.saturdayClosingHours;
         const sundayOpeningHours = data.sundayOpeningHours;
         const sundayClosingHours = data.sundayClosingHours;
-        const businessPhotos = data.businessPhotos;
+        const businessProfilePhoto = data.businessProfilePhoto;
         const isMondayOpen = data.isMondayOpen;
         const isTuesdayOpen = data.isTuesdayOpen;
         const isWednesdayOpen = data.isWednesdayOpen;
@@ -350,8 +350,8 @@ exports.itemsCollectionCreate = functions.firestore
         const isSaturdayOpen = data.isSaturdayOpen;
         const isSundayOpen = data.isSundayOpen;
 
-        if (businessPhotos != null) {
-            item.businessPhotos = businessPhotos;
+        if (businessProfilePhoto != null) {
+            item.businessProfilePhoto = businessProfilePhoto;
         }
         if (isMondayOpen != null) {
             item.isMondayOpen = isMondayOpen;
@@ -587,8 +587,8 @@ exports.itemsCollectionUpdate = functions.firestore
         if (dataBefore.sundayClosingHours != dataAfter.sundayClosingHours) {
             item.sundayClosingHours = dataAfter.sundayClosingHours;
         }
-        if (dataBefore.businessPhotos != dataAfter.businessPhotos) {
-            item.businessPhotos = dataAfter.businessPhotos;
+        if (dataBefore.businessProfilePhoto != dataAfter.businessProfilePhoto) {
+            item.businessProfilePhoto = dataAfter.businessProfilePhoto;
         }
         if (dataBefore.isMondayOpen != dataAfter.isMondayOpen) {
             item.isMondayOpen = dataAfter.isMondayOpen;
