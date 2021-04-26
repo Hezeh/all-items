@@ -230,6 +230,16 @@ exports.updateProfileItem = functions.firestore
         } else {
             await itemsRef.doc(itemId).set({ 'dateModified': dataAfter.dateModified }, { merge: true });
         }
+        if (dataAfter.isActive === dataBefore.isActive) {
+            return null;
+        } else {
+            await itemsRef.doc(itemId).set({ 'isActive': dataAfter.isActive }, { merge: true });
+        }
+        if (dataAfter.lastRenewal === dataBefore.lastRenewal) {
+            return null;
+        } else {
+            await itemsRef.doc(itemId).set({ 'lastRenewal': dataAfter.lastRenewal }, { merge: true });
+        }
     });
 
 // On Profile/{userId} Update -> Update the /items collection
