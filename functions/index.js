@@ -60,6 +60,8 @@ exports.createProfileItem = functions.firestore
             const _sundayOpeningHours = doc.data()['sundayOpeningHours'];
             const _sundayClosingHours = doc.data()['sundayClosingHours'];
             const _businessProfilePhoto = doc.data()['businessProfilePhoto'];
+            const _isActive = doc.data()['isActive']
+            const _lastRenewal = doc.data()['lastRenewal']
 
             const _data = {}
 
@@ -173,6 +175,12 @@ exports.createProfileItem = functions.firestore
             }
             if (userId != null) {
                 _data['userId'] = userId;
+            }
+            if (_lastRenewal != null) {
+                _data['lastRenewal'] = _lastRenewal;
+            }
+            if (_isActive != null) {
+                _data['isActive'] = _isActive;
             }
 
             // Create doc in firebase collection
