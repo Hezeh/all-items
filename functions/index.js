@@ -27,6 +27,8 @@ exports.createProfileItem = functions.firestore
         const _inStock = newValue.inStock;
         const _category = newValue.category;
         const _subCategory = newValue.subCategory;
+        const _isActive = doc.isActive
+        const _lastRenewal = doc.lastRenewal
 
         const doc = await db.collection('profile').doc(`${userId}`).get();
 
@@ -60,8 +62,6 @@ exports.createProfileItem = functions.firestore
             const _sundayOpeningHours = doc.data()['sundayOpeningHours'];
             const _sundayClosingHours = doc.data()['sundayClosingHours'];
             const _businessProfilePhoto = doc.data()['businessProfilePhoto'];
-            const _isActive = doc.data()['isActive']
-            const _lastRenewal = doc.data()['lastRenewal']
 
             const _data = {}
 
@@ -205,41 +205,15 @@ exports.updateProfileItem = functions.firestore
         itemId = context.params.itemId;
         const dataBefore = change.before.data();
         const dataAfter = change.after.data();
-        if (dataAfter.title === dataBefore.title) {
-            return null;
-        } else {
-            await itemsRef.doc(itemId).set({ 'title': dataAfter.title }, { merge: true });
-        }
-        if (dataAfter.description === dataBefore.description) {
-            return null;
-        } else {
-            await itemsRef.doc(itemId).set({ 'description': dataAfter.description }, { merge: true });
-        }
-        if (dataAfter.price === dataBefore.price) {
-            return null;
-        } else {
-            await itemsRef.doc(itemId).set({ 'price': dataAfter.price }, { merge: true });
-        }
-        if (dataAfter.inStock === dataBefore.inStock) {
-            return null;
-        } else {
-            await itemsRef.doc(itemId).set({ 'inStock': dataAfter.inStock }, { merge: true });
-        }
-        if (dataAfter.dateModified === dataBefore.dateModified) {
-            return null;
-        } else {
-            await itemsRef.doc(itemId).set({ 'dateModified': dataAfter.dateModified }, { merge: true });
-        }
-        if (dataAfter.isActive === dataBefore.isActive) {
-            return null;
-        } else {
-            await itemsRef.doc(itemId).set({ 'isActive': dataAfter.isActive }, { merge: true });
-        }
-        if (dataAfter.lastRenewal === dataBefore.lastRenewal) {
-            return null;
-        } else {
-            await itemsRef.doc(itemId).set({ 'lastRenewal': dataAfter.lastRenewal }, { merge: true });
-        }
+        await itemsRef.doc(itemId).set({
+            'title': dataAfter.title,
+            'description': dataAfter.description,
+            'price': dataAfter.price,
+            'inStock': dataAfter.inStock,
+            'dateModified': dataAfter.dateModified,
+            'isActive': dataAfter.isActive,
+            'lastRenewal': dataAfter.lastRenewal
+        }, { merge: true });
     });
 
 // On Profile/{userId} Update -> Update the /items collection
